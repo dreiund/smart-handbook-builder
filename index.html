@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>智能电子手册构建台</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="top-bar">
+      <a class="brand" href="#uploadStage" aria-label="智能电子手册构建台">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>智能电子手册构建台</span>
+      </a>
+      <div class="top-status" aria-label="系统状态">
+        <span class="badge badge-coral">演示模式</span>
+        <span class="badge" id="statusLabel">知识库待同步</span>
+      </div>
+      <div class="top-actions">
+        <button class="ghost-button" id="resetDemo" type="button">重置演示</button>
+        <button class="secondary-button" id="supplementEntryTop" type="button">上传补充材料</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="upload-stage" id="uploadStage" aria-labelledby="uploadTitle">
+        <div class="stage-copy">
+          <p class="eyebrow">Step 01 · Upload Layer</p>
+          <h1 id="uploadTitle">自动化电子手册生成系统</h1>
+          <p>
+            这个原型只模拟表面流程：原始文档和补充材料都会先进入上传层，再跳转到流程界面展示数据如何进入数据库、生成电子手册并支持多模态问答。
+          </p>
+        </div>
+
+        <div class="layered-shell">
+          <div class="shadow-layer layer-three" aria-hidden="true">
+            <span>电子手册 · 多模态问答 · 补充系统</span>
+          </div>
+          <div class="shadow-layer layer-two" aria-hidden="true">
+            <span>资料分块 · 关联度检测 · 重排序 · 版面设计</span>
+          </div>
+          <div class="shadow-layer layer-one" aria-hidden="true">
+            <span>格式分类 · PaddleOCR · Markdown · Embeddings · 数据库</span>
+          </div>
+
+          <article class="upload-card" aria-label="上传文档">
+            <div class="upload-card-copy">
+              <p class="eyebrow">文档入口</p>
+              <h2>上传任何格式的文档</h2>
+              <p>
+                PDF、Word、图片、表格、Markdown 都会被模拟传向后台。点击后会进入单独流程界面。
+              </p>
+              <div class="format-list" aria-label="支持格式">
+                <span>PDF</span>
+                <span>Word</span>
+                <span>Image</span>
+                <span>Sheet</span>
+                <span>Markdown</span>
+              </div>
+            </div>
+
+            <div class="first-layer-uploads" aria-label="上传入口">
+              <button class="upload-zone" id="uploadZone" type="button">
+                <span class="upload-icon" aria-hidden="true">↑</span>
+                <span class="upload-title" id="documentName">上传原始文档</span>
+                <span class="upload-note">生成数据库和电子手册</span>
+              </button>
+              <button class="upload-zone upload-zone-secondary" id="supplementUploadZone" type="button">
+                <span class="upload-icon" aria-hidden="true">↑</span>
+                <span class="upload-title" id="supplementDocumentName">上传补充材料</span>
+                <span class="upload-note">进入流程并更新数据库</span>
+              </button>
+            </div>
+
+            <div class="upload-actions">
+              <button class="primary-button" id="revealFlow" type="button">查看整个流动</button>
+              <span class="micro-status" id="uploadStatus">等待上传文档进入后台</span>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./script.js?v=3"></script>
+  </body>
+</html>

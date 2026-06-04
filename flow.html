@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>完整数据流动 · 智能电子手册构建台</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="flow-body">
+    <header class="top-bar">
+      <a class="brand" href="./index.html" aria-label="返回上传页">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>智能电子手册构建台</span>
+      </a>
+      <div class="top-status" aria-label="系统状态">
+        <span class="badge badge-coral">演示模式</span>
+        <span class="badge" id="statusLabel">流程准备中</span>
+      </div>
+      <div class="top-actions">
+        <a class="ghost-button link-button" href="./index.html">返回上传页</a>
+        <button class="secondary-button" id="replayFlow" type="button">重新演示整个流程</button>
+      </div>
+    </header>
+
+    <main class="flow-main">
+      <section class="flow-hero" aria-labelledby="flowTitle">
+        <div>
+          <p class="eyebrow">Processing Interface</p>
+          <h1 id="flowTitle">完整数据流动</h1>
+          <p id="flowIntro">
+            文档已进入后台。这个界面只展示流程变化：当数据到达数据库和电子手册节点时，会出现对应操作按钮。
+          </p>
+        </div>
+        <aside class="flow-summary">
+          <span>当前文档</span>
+          <strong id="documentName">企业知识手册素材包.pdf</strong>
+          <p id="uploadStatus">正在传向后台</p>
+        </aside>
+      </section>
+
+      <section class="flow-workspace" aria-label="完整流程工作台">
+        <div class="flow-panel flow-panel-page" id="flowPanel" aria-labelledby="flowBoardTitle">
+          <div class="section-heading">
+            <p class="eyebrow">Expanded Pipeline</p>
+            <h2 id="flowBoardTitle">处理链路</h2>
+            <p id="flowBoardCopy">步骤会按顺序点亮。到达第 6 步时可打开数据库；到达第 11 步时可打开电子手册网址。</p>
+          </div>
+
+          <div class="flow-track" id="stepList" aria-label="处理步骤"></div>
+
+          <aside class="processing-console" aria-label="后台处理日志">
+            <div class="console-top">
+              <span class="console-dot"></span>
+              <span>后台处理状态</span>
+            </div>
+            <div class="console-lines" id="consoleLines">
+              <p>等待流程启动...</p>
+            </div>
+          </aside>
+        </div>
+
+        <aside class="action-rail" aria-label="流程动作">
+          <article class="action-card" id="databaseActionCard">
+            <p class="eyebrow">Step 06</p>
+            <h2>数据库</h2>
+            <p id="databaseStatus">数据到达 `写入数据库` 后可打开分类数据。</p>
+            <button class="primary-button full-width" id="openDatabase" type="button" disabled>打开数据库</button>
+          </article>
+
+          <article class="action-card" id="manualActionCard">
+            <p class="eyebrow">Step 11</p>
+            <h2>电子手册</h2>
+            <p id="manualStatus">生成电子手册后可打开外部手册页面。</p>
+            <button class="primary-button full-width" id="openManual" type="button" disabled>打开电子手册</button>
+          </article>
+
+          <article class="action-card qa-panel" id="qaPanel">
+            <p class="eyebrow">Step 12</p>
+            <h2>多模态问答</h2>
+            <div class="question-row">
+              <input id="questionInput" type="text" value="售后问题应该先查哪个章节？" aria-label="多模态问题" />
+              <button class="primary-button compact" id="askQuestion" type="button">提问</button>
+            </div>
+            <div class="answer-box" id="answerBox">请先完成电子手册构建。</div>
+            <div class="source-list" id="sourceList"></div>
+          </article>
+        </aside>
+      </section>
+    </main>
+
+    <dialog class="database-dialog" id="databaseDialog" aria-labelledby="databaseDialogTitle">
+      <div class="dialog-top">
+        <div>
+          <p class="eyebrow">Classified Database</p>
+          <h2 id="databaseDialogTitle">数据库分类数据</h2>
+        </div>
+        <button class="ghost-button" id="closeDatabase" type="button">关闭</button>
+      </div>
+      <div class="database-groups" id="databaseGroups"></div>
+    </dialog>
+
+    <script type="module" src="./flowPage.js?v=7"></script>
+  </body>
+</html>
